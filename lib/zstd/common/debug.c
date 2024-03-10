@@ -2,7 +2,7 @@
 /* ******************************************************************
  * debug
  * Part of FSE library
- * Copyright (c) Yann Collet, Facebook, Inc.
+ * Copyright (c) Meta Platforms, Inc. and affiliates.
  *
  * You can contact the author at :
  * - Source repository : https://github.com/Cyan4973/FiniteStateEntropy
@@ -22,4 +22,10 @@
 
 #include "debug.h"
 
+#if (DEBUGLEVEL>=2)
+/* We only use this when DEBUGLEVEL>=2, but we get -Werror=pedantic errors if a
+ * translation unit is empty. So remove this from Linux kernel builds, but
+ * otherwise just leave it in.
+ */
 int g_debuglevel = DEBUGLEVEL;
+#endif
